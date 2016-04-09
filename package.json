@@ -1,0 +1,35 @@
+{
+  "name": "node-red-contrib-amazondash",
+  "version": "0.0.0",
+  "description": "A Node-RED node for listening to Amazon Dash button presses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predev": "npm i -g",
+    "dev": "node-red -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenkeep/node-red-contrib-amazondash.git"
+  },
+  "keywords": [
+    "node-red",
+    "amazon",
+    "dash"
+  ],
+  "author": "Stephen Keep",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/stephenkeep/node-red-contrib-amazondash/issues"
+  },
+  "homepage": "https://github.com/stephenkeep/node-red-contrib-amazondash#readme",
+  "node-red": {
+    "nodes": {
+      "ButtonPressed": "button-pressed.js"
+    }
+  },
+  "dependencies": {
+    "node-dash-button": "^0.3.0",
+    "underscore": "^1.8.3"
+  }
+}
