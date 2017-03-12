@@ -1,5 +1,4 @@
-var dash_button = require('node-dash-button'),
-    _ = require('underscore');
+var dash_button = require('node-dash-button');
 
 module.exports = function(RED) {
     function node (config) {
@@ -11,15 +10,14 @@ module.exports = function(RED) {
         
         console.log(mac);
 
-        var dash = dash_button(mac); 
-        var found = function () {
+        var dash = dash_button(mac);
+
+        dash.on("detected", function () {
             console.log('Button Pressed: ' + mac);
             var msg = {};
             node.send(msg);
-        };
-        
-        dash.on("detected", _.debounce(found, 5000, true));
+        });
     };
  
-    RED.nodes.registerType("ButtonPressed",node);
+    RED.nodes.registerType("ButtonPressed", node);
 }
