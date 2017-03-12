@@ -15,6 +15,12 @@ module.exports = function(RED) {
 
         var dash = dash_button(mac, iface, debounce, protocol);
 
+        node.on("close", function () {
+           if (typeof(dash) !== "undefined" && dash) {
+               dash.emit('close');
+           }
+        });
+
         dash.on("detected", function (dash_id) {
             console.log('Dash button Pressed: ' + dash_id);
             var msg = {};
