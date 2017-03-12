@@ -7,13 +7,16 @@ module.exports = function(RED) {
         var node = this;
         
         var mac = config.mac || '';
-        
-        console.log(mac);
+        var iface = config.iface || null;
+        var debounce = config.debounce || null;
+        var protocol = config.protocol || null;
 
-        var dash = dash_button(mac);
+        node.log("Listening to " + mac + " dash button" + (iface ? ' on ' + iface + ' interface' : ''));
 
-        dash.on("detected", function () {
-            console.log('Button Pressed: ' + mac);
+        var dash = dash_button(mac, iface, debounce, protocol);
+
+        dash.on("detected", function (dash_id) {
+            console.log('Dash button Pressed: ' + dash_id);
             var msg = {};
             node.send(msg);
         });

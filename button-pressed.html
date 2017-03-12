@@ -4,7 +4,10 @@
         color: '#F3EC14',
         defaults: {
             name: {value:"Dash Button"},
-            mac: {value:""}
+            mac: {value:""},
+            iface: {value:""},
+            debounce: {value:""},
+            protocol: {value:""}
         },
         inputs:0,
         outputs:1,
@@ -25,6 +28,25 @@
     <div class="form-row">
         <label for="node-input-mac">Dash MAC</label>
         <input type="text" id="node-input-mac" placeholder="00:00:00:00:00:00">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-iface">Capturing interface</label>
+        <input type="text" id="node-input-iface" placeholder="all">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-debounce">Timeout (ms)</label>
+        <input type="number" id="node-input-debounce" placeholder="5000">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-protocol">Protocol</label>
+        <select id="node-input-protocol" style="width:70%">
+            <option value="arp">arp</option>
+            <option value="udp">udp</option>
+            <option value="all">all</option>
+        </select>
     </div>
 
 </script>
