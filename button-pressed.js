@@ -8,12 +8,14 @@ module.exports = function(RED) {
         var node = this;
         
         var mac = config.mac || '';
+        var protocol = config.protocol || 'arp';
+        var timeout = config.timeout || 60000;
         
-        console.log(mac);
+        console.log(mac + ":" + timeout + ":" + protocol);
 
-        var dash = dash_button(mac); 
+        var dash = dash_button(mac,'',timeout,protocol); 
         var found = function () {
-            console.log('Button Pressed: ' + mac);
+            console.log('Button Pressed: ' + mac + ":" + timeout + ":" + protocol);
             var msg = {};
             node.send(msg);
         };
