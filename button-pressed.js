@@ -1,5 +1,4 @@
-var dash_button = require('node-dash-button'),
-    _ = require('underscore');
+var dash_button = require('node-dash-button');
 
 module.exports = function(RED) {
     function node (config) {
@@ -8,18 +7,26 @@ module.exports = function(RED) {
         var node = this;
         
         var mac = config.mac || '';
-        
-        console.log(mac);
+        var iface = config.iface || null;
+        var debounce = config.debounce || null;
+        var protocol = config.protocol || null;
 
-        var dash = dash_button(mac); 
-        var found = function () {
-            console.log('Button Pressed: ' + mac);
+        node.log("Listening to " + mac + " dash button" + (iface ? ' on ' + iface + ' interface' : ''));
+
+        var dash = dash_button(mac, iface, debounce, protocol);
+
+        node.on("close", function () {
+           if (typeof(dash) !== "undefined" && dash) {
+               dash.emit('close');
+           }
+        });
+
+        dash.on("detected", function (dash_id) {
+            console.log('Dash button Pressed: ' + dash_id);
             var msg = {};
             node.send(msg);
-        };
-        
-        dash.on("detected", _.debounce(found, 5000, true));
+        });
     };
  
-    RED.nodes.registerType("ButtonPressed",node);
+    RED.nodes.registerType("ButtonPressed", node);
 }

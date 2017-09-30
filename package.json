@@ -29,7 +29,6 @@
     }
   },
   "dependencies": {
-    "node-dash-button": "^0.3.0",
-    "underscore": "^1.8.3"
+    "node-dash-button": "git+https://github.com/Neonox31/node-dash-button.git#feature/close-session"
   }
 }
