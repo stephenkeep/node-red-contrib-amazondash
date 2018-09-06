@@ -9,7 +9,7 @@ module.exports = function(RED) {
         
         var mac = config.mac || '';
         // if there are mutliple addresses we split the chain
-        mac.split(',');
+        mac = mac.split(',');
         
         var interface = config.interface || null;
         console.log(mac);
