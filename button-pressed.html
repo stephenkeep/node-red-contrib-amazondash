@@ -4,7 +4,8 @@
         color: '#F3EC14',
         defaults: {
             name: {value:"Dash Button"},
-            mac: {value:""}
+            mac: {value:""},
+            interface: {value:""}
         },
         inputs:0,
         outputs:1,
@@ -24,11 +25,16 @@
 
     <div class="form-row">
         <label for="node-input-mac">Dash MAC</label>
-        <input type="text" id="node-input-mac" placeholder="00:00:00:00:00:00">
+        <input type="text" id="node-input-mac" placeholder="00:00:00:00:00:00,00:00:00:00:00:00">
+    </div>
+    <div class="form-row">
+        <label for="node-input-interface">Network interface</label>
+        <input type="text" id="node-input-interface">
     </div>
 
 </script>
 
 <script type="text/x-red" data-help-name="ButtonPressed">
-    <p>Configure the node with the Dash Button MAC Address</p>
+    <p>Configure the node with the Dash Button MAC Address (use comma <code>,</code> to separate multiple mac addresses)</p>
+    <p>You can optionally add the network interface to use for your Dash Buttons</p>
 </script>
