@@ -8,13 +8,15 @@ module.exports = function(RED) {
         var node = this;
         
         var mac = config.mac || '';
+
         
+        var interface = config.interface || null;
         console.log(mac);
 
-        var dash = dash_button(mac); 
+        var dash = dash_button(mac, interface); 
         var found = function () {
-            console.log('Button Pressed: ' + mac);
-            var msg = {};
+            console.log('Button Pressed: ' + dash_id);
+            var msg = {"mac": mac};
             node.send(msg);
         };
         
